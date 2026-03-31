@@ -4,40 +4,14 @@
   padding: 1rem 0 2rem;
 }
 
-.public-header {
-  position: sticky;
-  top: 0.75rem;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding: 1rem 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  border-radius: 999px;
-  background: rgba(252, 249, 244, 0.72);
-  backdrop-filter: blur(16px);
-  box-shadow: var(--shadow);
-}
-
-.brand-link {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.header-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+.app-shell--public {
+  width: min(1440px, calc(100% - 1rem));
+  padding-top: 0.5rem;
 }
 
 .public-main {
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .dashboard-shell {
@@ -75,14 +49,12 @@
 .sidebar-card h1,
 .page-header h1,
 .section-header h2,
-.auth-card h1,
-.hero-copy h1 {
+.auth-card h1 {
   margin: 0;
 }
 
 .sidebar-card p,
-.page-header p,
-.hero-copy p {
+.page-header p {
   color: var(--muted);
 }
 
@@ -193,7 +165,6 @@
     width: min(100%, calc(100% - 1rem));
   }
 
-  .public-header,
   .page-header,
   .section-header {
     flex-direction: column;
