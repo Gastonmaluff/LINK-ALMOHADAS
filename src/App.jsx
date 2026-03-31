@@ -10,8 +10,6 @@ import Loader from './components/common/Loader';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const PrivateLayout = lazy(() => import('./layouts/PrivateLayout'));
-const AdminDashboardPage = lazy(() => import('./pages/AdminDashboardPage'));
-const SellerDashboardPage = lazy(() => import('./pages/SellerDashboardPage'));
 
 function App() {
   return (
@@ -26,32 +24,17 @@ function App() {
               </Route>
 
               <Route
-                path="/panel"
+                path="/admin"
                 element={
-                  <ProtectedRoute>
+                  <ProtectedRoute allowedRoles={['superadmin', 'seller']}>
                     <PrivateLayout />
                   </ProtectedRoute>
                 }
               >
                 <Route index element={<PanelRedirectPage />} />
-                <Route
-                  path="admin"
-                  element={
-                    <ProtectedRoute allowedRoles={['superadmin']}>
-                      <AdminDashboardPage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="operaciones"
-                  element={
-                    <ProtectedRoute allowedRoles={['superadmin', 'seller']}>
-                      <SellerDashboardPage />
-                    </ProtectedRoute>
-                  }
-                />
               </Route>
 
+              <Route path="/panel/*" element={<Navigate to="/admin" replace />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>

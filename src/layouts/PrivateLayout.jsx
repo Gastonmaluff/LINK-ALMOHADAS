@@ -1,10 +1,10 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import { getPublicCatalogUrl } from '../utils/formatters';
 import { useToast } from '../context/ToastContext';
 
 export default function PrivateLayout() {
-  const { profile, logout, isSuperAdmin } = useAuth();
+  const { profile, logout } = useAuth();
   const { showToast } = useToast();
 
   const copyCatalogLink = async () => {
@@ -28,22 +28,11 @@ export default function PrivateLayout() {
     <div className="dashboard-shell">
       <aside className="dashboard-sidebar">
         <div className="sidebar-card">
-          <span className="eyebrow">Panel privado</span>
+          <span className="eyebrow">Portal interno</span>
           <h1>Link Almohadas</h1>
           <p>{profile?.nombre}</p>
           <span className="role-pill">{profile?.role === 'superadmin' ? 'Super admin' : 'Vendedora'}</span>
         </div>
-
-        <nav className="sidebar-nav">
-          {isSuperAdmin ? (
-            <NavLink to="/panel/admin" className="sidebar-link">
-              Administracion
-            </NavLink>
-          ) : null}
-          <NavLink to="/panel/operaciones" className="sidebar-link">
-            Operaciones
-          </NavLink>
-        </nav>
 
         <div className="sidebar-actions">
           <button type="button" className="ghost-button" onClick={copyCatalogLink}>

@@ -1,12 +1,13 @@
-import { Navigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import AdminDashboardPage from './AdminDashboardPage';
+import SellerDashboardPage from './SellerDashboardPage';
 
 export default function PanelRedirectPage() {
   const { role } = useAuth();
 
   if (role === 'superadmin') {
-    return <Navigate to="/panel/admin" replace />;
+    return <AdminDashboardPage />;
   }
 
-  return <Navigate to="/panel/operaciones" replace />;
+  return <SellerDashboardPage />;
 }

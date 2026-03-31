@@ -19,7 +19,7 @@ export default function ProtectedRoute({ children, allowedRoles = [] }) {
   }
 
   if (allowedRoles.length > 0 && !allowedRoles.includes(role)) {
-    return <Navigate to="/panel" replace />;
+    return <Navigate to="/admin" replace />;
   }
 
   return children;

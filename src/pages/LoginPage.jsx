@@ -21,7 +21,7 @@ export default function LoginPage() {
 
     try {
       await login(form.email.trim(), form.password);
-      navigate('/panel', { replace: true });
+      navigate('/admin', { replace: true });
     } catch (error) {
       showToast({
         title: 'No se pudo iniciar sesion',
@@ -38,8 +38,8 @@ export default function LoginPage() {
       <div className="auth-card">
         <div>
           <span className="eyebrow">Acceso interno</span>
-          <h1>Ingresar al panel</h1>
-          <p>Super admin y vendedora entran desde aca. El catalogo publico siempre sigue abierto.</p>
+          <h1>Ingresar al portal</h1>
+          <p>Super admin y vendedora entran desde esta ruta privada. El catalogo publico sigue separado.</p>
         </div>
 
         <form className="form-grid" onSubmit={handleSubmit}>
@@ -70,7 +70,7 @@ export default function LoginPage() {
           </label>
 
           <button type="submit" className="primary-button" disabled={submitting}>
-            {submitting ? 'Ingresando...' : 'Entrar al panel'}
+            {submitting ? 'Ingresando...' : 'Entrar al portal'}
           </button>
         </form>
       </div>
